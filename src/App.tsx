@@ -131,56 +131,30 @@ export function App() {
   const activeNavLabel = NAV_ITEMS.find((n) => n.id === activeTab)?.label || 'Dashboard';
 
   return (
-    <div className="min-h-screen bg-[#05020D] text-[#F8F7FF] flex flex-col relative selection:bg-purple-500/30 selection:text-purple-100">
-      {/* Top Cosmic Navigation Bar */}
-      <header className="sticky top-0 z-40 px-4 sm:px-8 py-4 bg-[#05020D]/80 backdrop-blur-xl border-b border-purple-500/15 flex items-center justify-between gap-4">
-        {/* Left: Glowing Purple Constellation Emblem + VaultGuard Wordmark */}
+    <div className="min-h-screen bg-[#080B0A] text-[#E8ECE9] flex flex-col relative selection:bg-emerald-500/20 selection:text-emerald-100">
+      {/* Top Institutional Navigation Bar */}
+      <header className="sticky top-0 z-40 px-4 sm:px-8 py-3.5 bg-[#0D1210] border-b border-neutral-800 flex items-center justify-between gap-4">
+        {/* Left: Clean Shield Emblem + VaultGuard Wordmark */}
         <div className="flex items-center gap-4">
           <button
             type="button"
             onClick={() => setActiveTab('dashboard')}
             className="group flex items-center gap-3 cursor-pointer"
           >
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-500/40 via-purple-800/50 to-[#14072E] border border-purple-400/50 shadow-[0_0_22px_rgba(168,85,247,0.5)] flex items-center justify-center transition-transform duration-200 group-hover:scale-105">
-              <svg
-                className="w-5 h-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="8.5"
-                  stroke="#E9D5FF"
-                  strokeWidth="1.4"
-                  strokeDasharray="3 2"
-                />
-                <path
-                  d="M12 3.5L18.5 8V16L12 20.5L5.5 16V8L12 3.5Z"
-                  stroke="#C084FC"
-                  strokeWidth="1.5"
-                />
-                <circle cx="12" cy="12" r="2.5" fill="#FFFFFF" />
-                <path
-                  d="M12 3.5V9.5M18.5 8L14.2 10.8M18.5 16L14.2 13.2M12 20.5V14.5M5.5 16L9.8 13.2M5.5 8L9.8 10.8"
-                  stroke="#A855F7"
-                  strokeWidth="1.1"
-                />
-              </svg>
+            <div className="w-8 h-8 rounded-lg bg-neutral-900 border border-neutral-700 flex items-center justify-center transition-colors group-hover:border-emerald-500">
+              <Shield className="w-4 h-4 text-emerald-400" />
             </div>
-            <span className="text-base sm:text-lg font-semibold tracking-tight text-white">
+            <span className="text-lg font-bold tracking-tight text-white">
               VaultGuard
             </span>
           </button>
 
           {currentUser && (
-            <span className="hidden lg:inline-flex items-center gap-2 text-xs font-mono text-purple-300/80 pl-3 border-l border-purple-400/20">
-              <Calendar className="w-3.5 h-3.5 text-purple-400" />
+            <span className="hidden lg:inline-flex items-center gap-2 text-xs font-mono text-neutral-400 pl-3 border-l border-neutral-800">
+              <Calendar className="w-3.5 h-3.5 text-neutral-400" />
               <span>{formatFullLiveDate(liveDate)}</span>
-              <span className="text-purple-400/40">·</span>
-              <span className="text-purple-200 font-semibold">{activeNavLabel}</span>
+              <span className="text-neutral-600">·</span>
+              <span className="text-neutral-200 font-semibold">{activeNavLabel}</span>
             </span>
           )}
         </div>
@@ -188,18 +162,18 @@ export function App() {
         {/* Right: Login & Sign up (when logged out) OR Active User Session (when logged in) */}
         <div className="flex items-center gap-2.5 sm:gap-3.5">
           {currentUser ? (
-            <div className="flex items-center gap-2 bg-[#120829] border border-purple-400/35 px-3 py-1.5 rounded-xl text-xs">
+            <div className="flex items-center gap-2.5 bg-neutral-900 border border-neutral-800 px-3 py-1.5 rounded-lg text-xs">
               <span
                 className={`w-2 h-2 rounded-full ${
                   currentUser.isAdminPortal
-                    ? 'bg-fuchsia-400 shadow-[0_0_8px_#E879F9]'
-                    : 'bg-emerald-400 shadow-[0_0_8px_#34D399]'
+                    ? 'bg-amber-400'
+                    : 'bg-emerald-400'
                 }`}
               />
-              <span className="font-mono text-purple-100 font-medium truncate max-w-[160px]">
+              <span className="font-mono text-neutral-200 font-medium truncate max-w-[160px]">
                 {currentUser.name.split(' ')[0]} ({currentUser.accountId})
               </span>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-purple-500/25 text-purple-200">
+              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-neutral-800 text-neutral-300">
                 {currentUser.role}
               </span>
               <button
@@ -207,7 +181,7 @@ export function App() {
                 onClick={handleSignOut}
                 title="Sign out"
                 aria-label="Sign out"
-                className="text-purple-300 hover:text-white pl-1 cursor-pointer"
+                className="text-neutral-400 hover:text-white pl-1 cursor-pointer"
               >
                 <LogOut className="w-3.5 h-3.5" />
               </button>
@@ -217,7 +191,7 @@ export function App() {
               <button
                 type="button"
                 onClick={() => setAuthModal('login')}
-                className="px-3 py-1.5 text-xs sm:text-sm font-medium text-purple-100/90 hover:text-white transition-colors cursor-pointer"
+                className="px-4 py-2 text-sm font-medium text-neutral-300 hover:text-white transition-colors cursor-pointer"
               >
                 Login
               </button>
@@ -225,7 +199,7 @@ export function App() {
               <button
                 type="button"
                 onClick={() => setAuthModal('register')}
-                className="px-4 py-2 text-xs sm:text-sm font-medium text-white rounded-xl bg-purple-600/25 hover:bg-purple-600/40 border border-purple-400/40 shadow-[0_0_24px_rgba(147,51,234,0.35)] transition-all cursor-pointer"
+                className="px-4 py-2 text-sm font-semibold text-neutral-950 rounded-lg bg-emerald-500 hover:bg-emerald-400 transition-colors cursor-pointer"
               >
                 Sign up
               </button>
@@ -242,7 +216,7 @@ export function App() {
               }
             }}
             aria-label="Toggle navigation menu"
-            className="p-2 rounded-xl text-purple-100 hover:text-white hover:bg-purple-500/20 border border-transparent hover:border-purple-400/30 transition-colors cursor-pointer"
+            className="p-2 rounded-lg text-neutral-400 hover:text-white hover:bg-neutral-800 border border-transparent hover:border-neutral-700 transition-colors cursor-pointer"
           >
             {drawerOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
