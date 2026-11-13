@@ -98,18 +98,30 @@ export const CosmicHeroStage: React.FC<CosmicHeroStageProps> = ({ state, onOpenA
 
   return (
     <section className="relative w-full pt-10 pb-16 px-4 sm:px-8 select-none">
-      {/* Crisp Institutional Header */}
-      <div className="max-w-3xl mx-auto text-center flex flex-col items-center pb-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 text-sm font-medium mb-5">
-          <ShieldCheck className="w-4 h-4 text-emerald-400" />
+      {/* Retained Cosmic Ambient Glow Behind Content */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(circle at 50% 35%, rgba(139, 92, 246, 0.22) 0%, rgba(76, 29, 149, 0.08) 45%, rgba(6, 2, 14, 0) 70%)',
+        }}
+      />
+
+      {/* Atmospheric Horizon Ring (Subtle, clean, non-blurry) */}
+      <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-48 w-[600px] h-[300px] rounded-full border border-purple-500/20 opacity-40 blur-[1px]" />
+
+      {/* Clean Header with legible typography */}
+      <div className="relative z-10 max-w-3xl mx-auto text-center flex flex-col items-center pb-10">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-950/60 border border-purple-400/30 text-purple-200 text-sm font-medium mb-5 shadow-sm">
+          <ShieldCheck className="w-4 h-4 text-purple-400" />
           <span>Autonomous Treasury Firewall on NEAR</span>
         </div>
 
-        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight">
           Enterprise Treasury Security
         </h1>
 
-        <p className="text-base sm:text-lg text-neutral-300 max-w-xl font-normal leading-relaxed">
+        <p className="text-base sm:text-lg text-purple-200/80 max-w-xl font-normal leading-relaxed">
           Cryptographically enforce spending caps, verify invoices with private AI, and settle safely across chains.
         </p>
 
@@ -118,7 +130,7 @@ export const CosmicHeroStage: React.FC<CosmicHeroStageProps> = ({ state, onOpenA
           <button
             type="button"
             onClick={() => onOpenAuth('login')}
-            className="px-6 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-neutral-950 text-base font-semibold transition-colors cursor-pointer flex items-center gap-2 shadow-sm"
+            className="px-6 py-2.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-base font-semibold transition-colors cursor-pointer flex items-center gap-2 shadow-md"
           >
             <span>Open Dashboard</span>
             <ArrowRight className="w-4 h-4" />
@@ -126,19 +138,19 @@ export const CosmicHeroStage: React.FC<CosmicHeroStageProps> = ({ state, onOpenA
           <button
             type="button"
             onClick={() => onOpenAuth('register')}
-            className="px-5 py-2.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 text-neutral-200 text-base font-medium transition-colors cursor-pointer"
+            className="px-5 py-2.5 rounded-lg bg-[#140B2D] hover:bg-[#1E1142] border border-purple-400/30 text-purple-100 text-base font-medium transition-colors cursor-pointer"
           >
             Register Account
           </button>
         </div>
       </div>
 
-      {/* Clean Institutional Activity & Metrics Card */}
-      <div className="max-w-3xl mx-auto rounded-xl border border-neutral-800 bg-[#0E1311] p-6 sm:p-8 shadow-xl">
-        {/* Card Header: Vault Balances & Real Live Date */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-neutral-800">
+      {/* Solid Dark Purple Card (Restored deep cosmic palette, no noisy glass blur) */}
+      <div className="relative z-10 max-w-3xl mx-auto rounded-xl border border-purple-500/25 bg-[#0F0921] p-6 sm:p-8 shadow-2xl">
+        {/* Card Header: Vault Balances & Month Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-purple-500/15">
           <div>
-            <div className="text-xs uppercase tracking-wider text-neutral-400 font-semibold mb-1">
+            <div className="text-xs uppercase tracking-wider text-purple-300/70 font-semibold mb-1">
               Active Ledger Period
             </div>
             <div className="text-xl sm:text-2xl font-bold text-white tracking-tight">
@@ -146,20 +158,20 @@ export const CosmicHeroStage: React.FC<CosmicHeroStageProps> = ({ state, onOpenA
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
-            <div className="bg-neutral-900/90 border border-neutral-800 rounded-lg px-4 py-2">
-              <div className="text-xs text-neutral-400 uppercase font-medium">USDC Vault Reserve</div>
+          <div className="flex items-center gap-3">
+            <div className="bg-[#170E32] border border-purple-500/20 rounded-lg px-4 py-2">
+              <div className="text-xs text-purple-300/70 uppercase font-medium">USDC Vault Reserve</div>
               <div className="text-lg font-bold text-white font-mono">${totalUsdc}</div>
             </div>
-            <div className="bg-neutral-900/90 border border-neutral-800 rounded-lg px-4 py-2">
-              <div className="text-xs text-neutral-400 uppercase font-medium">Daily Available</div>
+            <div className="bg-[#170E32] border border-purple-500/20 rounded-lg px-4 py-2">
+              <div className="text-xs text-purple-300/70 uppercase font-medium">Daily Available</div>
               <div className="text-lg font-bold text-emerald-400 font-mono">${remainingDaily}</div>
             </div>
           </div>
         </div>
 
-        {/* 7-Day Clean Date Selector Strip */}
-        <div className="grid grid-cols-7 gap-2 text-center py-5 border-b border-neutral-800">
+        {/* 7-Day Date Selector Strip */}
+        <div className="grid grid-cols-7 gap-2 text-center py-5 border-b border-purple-500/15">
           {weekDays.map((d, idx) => {
             const isSelected = idx === selectedDayIdx;
             return (
@@ -169,11 +181,11 @@ export const CosmicHeroStage: React.FC<CosmicHeroStageProps> = ({ state, onOpenA
                 onClick={() => setSelectedDayIdx(idx)}
                 className={`flex flex-col items-center gap-1.5 py-2.5 px-1 rounded-lg cursor-pointer transition-colors ${
                   isSelected
-                    ? 'bg-emerald-500 text-neutral-950 font-bold'
-                    : 'text-neutral-400 hover:text-white hover:bg-neutral-800/60'
+                    ? 'bg-purple-600 text-white font-bold'
+                    : 'text-purple-300/60 hover:text-white hover:bg-purple-900/30'
                 }`}
               >
-                <span className={`text-xs uppercase font-medium ${isSelected ? 'text-neutral-950 font-bold' : 'text-neutral-400'}`}>
+                <span className={`text-xs uppercase font-medium ${isSelected ? 'text-white font-bold' : 'text-purple-300/70'}`}>
                   {d.day}
                 </span>
                 <span className="text-base font-bold font-mono">
@@ -193,22 +205,22 @@ export const CosmicHeroStage: React.FC<CosmicHeroStageProps> = ({ state, onOpenA
                 {selectedDay.formattedNote}
               </span>
             </div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400 bg-emerald-950/40 border border-emerald-800/40 px-2.5 py-1 rounded">
+            <div className="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400 bg-emerald-950/50 border border-emerald-500/30 px-2.5 py-1 rounded">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>42/42 Security Gates Enforced</span>
             </div>
           </div>
 
-          <p className="text-sm sm:text-base text-neutral-300 font-normal leading-relaxed">
+          <p className="text-sm sm:text-base text-purple-200/90 font-normal leading-relaxed">
             {selectedDay.summary}
           </p>
 
-          {/* Interactive Invoice Status Strip */}
+          {/* Clean Invoice Status Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
             <button
               type="button"
               onClick={() => onOpenAuth('login')}
-              className="flex items-center justify-between p-3.5 rounded-lg border border-neutral-800 bg-neutral-900/60 hover:bg-neutral-800 hover:border-neutral-700 transition-colors cursor-pointer text-left group"
+              className="flex items-center justify-between p-3.5 rounded-lg border border-purple-500/20 bg-[#160E33] hover:bg-[#1E1342] hover:border-purple-400/40 transition-colors cursor-pointer text-left group"
             >
               <div className="space-y-1">
                 <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-400">
@@ -217,13 +229,13 @@ export const CosmicHeroStage: React.FC<CosmicHeroStageProps> = ({ state, onOpenA
                 </div>
                 <div className="text-sm font-bold text-white font-mono">$250.00 USDC &rarr; Base</div>
               </div>
-              <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-neutral-300 transition-colors" />
+              <ArrowUpRight className="w-4 h-4 text-purple-400 group-hover:text-white transition-colors" />
             </button>
 
             <button
               type="button"
               onClick={() => onOpenAuth('login')}
-              className="flex items-center justify-between p-3.5 rounded-lg border border-neutral-800 bg-neutral-900/60 hover:bg-neutral-800 hover:border-neutral-700 transition-colors cursor-pointer text-left group"
+              className="flex items-center justify-between p-3.5 rounded-lg border border-purple-500/20 bg-[#160E33] hover:bg-[#1E1342] hover:border-purple-400/40 transition-colors cursor-pointer text-left group"
             >
               <div className="space-y-1">
                 <div className="flex items-center gap-1.5 text-xs font-semibold text-amber-400">
@@ -232,22 +244,22 @@ export const CosmicHeroStage: React.FC<CosmicHeroStageProps> = ({ state, onOpenA
                 </div>
                 <div className="text-sm font-bold text-white font-mono">$320.00 USDC &rarr; Arbitrum</div>
               </div>
-              <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-neutral-300 transition-colors" />
+              <ArrowUpRight className="w-4 h-4 text-purple-400 group-hover:text-white transition-colors" />
             </button>
 
             <button
               type="button"
               onClick={() => onOpenAuth('login')}
-              className="flex items-center justify-between p-3.5 rounded-lg border border-neutral-800 bg-neutral-900/60 hover:bg-neutral-800 hover:border-neutral-700 transition-colors cursor-pointer text-left group"
+              className="flex items-center justify-between p-3.5 rounded-lg border border-purple-500/20 bg-[#160E33] hover:bg-[#1E1342] hover:border-purple-400/40 transition-colors cursor-pointer text-left group"
             >
               <div className="space-y-1">
-                <div className="flex items-center gap-1.5 text-xs font-semibold text-red-400">
+                <div className="flex items-center gap-1.5 text-xs font-semibold text-rose-400">
                   <ShieldAlert className="w-3.5 h-3.5" />
                   <span>ATTACK BLOCKED</span>
                 </div>
                 <div className="text-sm font-bold text-white font-mono">$10,000 Prompt Injection</div>
               </div>
-              <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-neutral-300 transition-colors" />
+              <ArrowUpRight className="w-4 h-4 text-purple-400 group-hover:text-white transition-colors" />
             </button>
           </div>
         </div>

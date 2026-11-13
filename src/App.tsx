@@ -131,9 +131,9 @@ export function App() {
   const activeNavLabel = NAV_ITEMS.find((n) => n.id === activeTab)?.label || 'Dashboard';
 
   return (
-    <div className="min-h-screen bg-[#080B0A] text-[#E8ECE9] flex flex-col relative selection:bg-emerald-500/20 selection:text-emerald-100">
-      {/* Top Institutional Navigation Bar */}
-      <header className="sticky top-0 z-40 px-4 sm:px-8 py-3.5 bg-[#0D1210] border-b border-neutral-800 flex items-center justify-between gap-4">
+    <div className="min-h-screen bg-[#06020E] text-[#F8F7FF] flex flex-col relative selection:bg-purple-500/30 selection:text-purple-100">
+      {/* Top Navigation Bar with Deep Purple Palette */}
+      <header className="sticky top-0 z-40 px-4 sm:px-8 py-3.5 bg-[#0A0417] border-b border-purple-500/20 flex items-center justify-between gap-4">
         {/* Left: Clean Shield Emblem + VaultGuard Wordmark */}
         <div className="flex items-center gap-4">
           <button
@@ -141,8 +141,8 @@ export function App() {
             onClick={() => setActiveTab('dashboard')}
             className="group flex items-center gap-3 cursor-pointer"
           >
-            <div className="w-8 h-8 rounded-lg bg-neutral-900 border border-neutral-700 flex items-center justify-center transition-colors group-hover:border-emerald-500">
-              <Shield className="w-4 h-4 text-emerald-400" />
+            <div className="w-8 h-8 rounded-lg bg-[#14082B] border border-purple-500/30 flex items-center justify-center transition-colors group-hover:border-purple-400">
+              <Shield className="w-4 h-4 text-purple-400" />
             </div>
             <span className="text-lg font-bold tracking-tight text-white">
               VaultGuard
@@ -150,11 +150,11 @@ export function App() {
           </button>
 
           {currentUser && (
-            <span className="hidden lg:inline-flex items-center gap-2 text-xs font-mono text-neutral-400 pl-3 border-l border-neutral-800">
-              <Calendar className="w-3.5 h-3.5 text-neutral-400" />
+            <span className="hidden lg:inline-flex items-center gap-2 text-xs font-mono text-purple-300/80 pl-3 border-l border-purple-500/20">
+              <Calendar className="w-3.5 h-3.5 text-purple-400" />
               <span>{formatFullLiveDate(liveDate)}</span>
-              <span className="text-neutral-600">·</span>
-              <span className="text-neutral-200 font-semibold">{activeNavLabel}</span>
+              <span className="text-purple-400/40">·</span>
+              <span className="text-purple-200 font-semibold">{activeNavLabel}</span>
             </span>
           )}
         </div>
@@ -162,7 +162,7 @@ export function App() {
         {/* Right: Login & Sign up (when logged out) OR Active User Session (when logged in) */}
         <div className="flex items-center gap-2.5 sm:gap-3.5">
           {currentUser ? (
-            <div className="flex items-center gap-2.5 bg-neutral-900 border border-neutral-800 px-3 py-1.5 rounded-lg text-xs">
+            <div className="flex items-center gap-2.5 bg-[#14082B] border border-purple-500/30 px-3 py-1.5 rounded-lg text-xs">
               <span
                 className={`w-2 h-2 rounded-full ${
                   currentUser.isAdminPortal
@@ -170,10 +170,10 @@ export function App() {
                     : 'bg-emerald-400'
                 }`}
               />
-              <span className="font-mono text-neutral-200 font-medium truncate max-w-[160px]">
+              <span className="font-mono text-purple-100 font-medium truncate max-w-[160px]">
                 {currentUser.name.split(' ')[0]} ({currentUser.accountId})
               </span>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-neutral-800 text-neutral-300">
+              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-purple-900/40 text-purple-200">
                 {currentUser.role}
               </span>
               <button
@@ -181,7 +181,7 @@ export function App() {
                 onClick={handleSignOut}
                 title="Sign out"
                 aria-label="Sign out"
-                className="text-neutral-400 hover:text-white pl-1 cursor-pointer"
+                className="text-purple-300 hover:text-white pl-1 cursor-pointer"
               >
                 <LogOut className="w-3.5 h-3.5" />
               </button>
@@ -191,7 +191,7 @@ export function App() {
               <button
                 type="button"
                 onClick={() => setAuthModal('login')}
-                className="px-4 py-2 text-sm font-medium text-neutral-300 hover:text-white transition-colors cursor-pointer"
+                className="px-4 py-2 text-sm font-medium text-purple-200 hover:text-white transition-colors cursor-pointer"
               >
                 Login
               </button>
@@ -199,7 +199,7 @@ export function App() {
               <button
                 type="button"
                 onClick={() => setAuthModal('register')}
-                className="px-4 py-2 text-sm font-semibold text-neutral-950 rounded-lg bg-emerald-500 hover:bg-emerald-400 transition-colors cursor-pointer"
+                className="px-4 py-2 text-sm font-semibold text-white rounded-lg bg-purple-600 hover:bg-purple-500 transition-colors cursor-pointer"
               >
                 Sign up
               </button>
@@ -216,7 +216,7 @@ export function App() {
               }
             }}
             aria-label="Toggle navigation menu"
-            className="p-2 rounded-lg text-neutral-400 hover:text-white hover:bg-neutral-800 border border-transparent hover:border-neutral-700 transition-colors cursor-pointer"
+            className="p-2 rounded-lg text-purple-300 hover:text-white hover:bg-purple-900/40 border border-transparent hover:border-purple-400/30 transition-colors cursor-pointer"
           >
             {drawerOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
