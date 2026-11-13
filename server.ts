@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express, { NextFunction, Request, Response } from 'express';
 import path from 'node:path';
 import { createServer as createViteServer } from 'vite';

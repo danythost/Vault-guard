@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import { getActivePaymentMode } from '../packages/intents/client';
 import { getOrGenerateVerifierKeyPair } from '../packages/policy-engine/signatures';
 
