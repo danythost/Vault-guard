@@ -23,6 +23,21 @@ import {
 const app = express();
 app.use(express.json({ limit: '5mb' }));
 
+// Enable CORS for external frontends (e.g. Firebase Hosting)
+app.use((req: Request, res: Response, next: NextFunction) => {
+  const origin = req.headers.origin || '*';
+  res.header('Access-Control-Allow-Origin', origin);
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, x-near-account-id');
+  res.header('Access-Control-Allow-Credentials', 'true');
+
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(204);
+    return;
+  }
+  next();
+});
+
 // Simple in-memory rate limiter per IP
 const rateLimitWindowMs = 60_000;
 const maxRequestsPerMinute = 300;

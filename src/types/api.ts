@@ -63,6 +63,8 @@ export interface AppStateBundle {
   paymentMode: 'simulation' | 'mainnet';
 }
 
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
+
 export async function apiRequest<T>(
   path: string,
   options?: RequestInit & { callerAccount?: string }
@@ -71,7 +73,8 @@ export async function apiRequest<T>(
     'Content-Type': 'application/json',
     'x-near-account-id': options?.callerAccount || 'admin.vaultguard.testnet',
   };
-  const res = await fetch(path, {
+  const url = path.startsWith('http') ? path : `${API_BASE_URL}${path}`;
+  const res = await fetch(url, {
     ...options,
     headers: {
       ...headers,
